@@ -1,79 +1,125 @@
 import Foundation
 import AVFoundation
-
-struct Story {
-    let title: String
-    let author: String
-    let duration: TimeInterval
-    let audioURL: URL
-}
-
-struct PlaybackState: Codable {
-    var isPlaying: Bool = false
-    var currentTime: TimeInterval = 0
-    var remainingTimerDuration: TimeInterval?
-    
-    static func load() -> PlaybackState {
-        if let data = UserDefaults.standard.data(forKey: "PlaybackState"),
-           let state = try? JSONDecoder().decode(PlaybackState.self, from: data) {
-            return state
-        }
-        return PlaybackState()
-    }
-    
-    func save() {
-        if let data = try? JSONEncoder().encode(self) {
-            UserDefaults.standard.set(data, forKey: "PlaybackState")
-        }
-    }
-}
+import Combine
 
 class AudioManager: ObservableObject {
     // MARK: - Published Properties
     @Published private(set) var playbackState: PlaybackState
     @Published private(set) var currentStory: Story?
     @Published private(set) var isBuffering = false
+    @Published private(set) var error: Error?
     
     // MARK: - Private Properties
-    private var audioPlayer: AVPlayer?
+    private var player: AVPlayer?
     private var timeObserver: Any?
     private var sleepTimer: Timer?
+    private var cancellables = Set<AnyCancellable>()
     private let userPreferences: UserPreferences
     
     // MARK: - Initialization
     init(userPreferences: UserPreferences = .load()) {
         self.userPreferences = userPreferences
-        self.playbackState = .load()
+        self.playbackState = .initial
         setupAudioSession()
+    }
+    
+    deinit {
+        removeTimeObserver()
+        sleepTimer?.invalidate()
+    }
+    
+    // MARK: - Public Methods
+    func loadAudio(from url: URL) {
+        let playerItem = AVPlayerItem(url: url)
+        player = AVPlayer(playerItem: playerItem)
         
-        // Example story for testing
+        // Create a test story with initial duration of 0
         currentStory = Story(
-            title: "Sample Story",
-            author: "Author Name",
-            duration: 1800, // 30 minutes
-            audioURL: URL(string: "https://example.com/audio.mp3")!
+            title: "Test Audio",
+            description: "A sample audio file for testing",
+            narrator: "Test Narrator",
+            duration: 0,  // Start with 0 duration
+            category: .modernHistory,
+            timePeriod: "2024",
+            region: "Test Region",
+            audioURL: url
+        )
+        
+        // Wait for the item to become ready before accessing duration
+        playerItem.publisher(for: \.status)
+            .filter { $0 == .readyToPlay }
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                let duration = CMTimeGetSeconds(playerItem.duration)
+                if duration.isFinite && !duration.isNaN {
+                    // Update the story with the correct duration
+                    if let story = self.currentStory {
+                        self.currentStory = Story(
+                            id: story.id,
+                            title: story.title,
+                            description: story.description,
+                            narrator: story.narrator,
+                            duration: duration,
+                            category: story.category,
+                            timePeriod: story.timePeriod,
+                            region: story.region,
+                            thumbnailURL: story.thumbnailURL,
+                            audioURL: story.audioURL,
+                            lastPlayedDate: Date(),
+                            progress: 0
+                        )
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
+        addTimeObserver()
+    }
+    
+    func loadSampleAudio() {
+        // First try looking in the Samples directory
+        if let sampleURL = Bundle.main.url(forResource: "sample_history", withExtension: "mp3", subdirectory: "Samples") {
+            loadAudio(from: sampleURL)
+            return
+        }
+        
+        // If not found in Samples subdirectory, try root level
+        if let sampleURL = Bundle.main.url(forResource: "sample_history", withExtension: "mp3") {
+            loadAudio(from: sampleURL)
+            return
+        }
+        
+        // If still not found, try looking in the app's main bundle directory
+        let bundleURL = Bundle.main.bundleURL.appendingPathComponent("sample_history.mp3")
+        if FileManager.default.fileExists(atPath: bundleURL.path) {
+            loadAudio(from: bundleURL)
+            return
+        }
+        
+        // If all attempts fail, report the error
+        error = NSError(domain: "AudioManager", 
+                       code: -1, 
+                       userInfo: [NSLocalizedDescriptionKey: "Could not find sample audio file. Please ensure it's properly added to the app bundle."])
+    }
+    
+    func play() {
+        player?.play()
+        playbackState = PlaybackState(
+            currentStoryID: currentStory?.id,
+            currentTime: playbackState.currentTime,
+            isPlaying: true,
+            sleepTimerEndTime: playbackState.sleepTimerEndTime
         )
     }
     
-    // MARK: - Audio Session Setup
-    private func setupAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("Failed to set up audio session: \(error)")
-        }
-    }
-    
-    // MARK: - Playback Control
-    func play() {
-        playbackState.isPlaying = true
-        audioPlayer?.play()
-    }
-    
     func pause() {
-        playbackState.isPlaying = false
-        audioPlayer?.pause()
+        player?.pause()
+        playbackState = PlaybackState(
+            currentStoryID: currentStory?.id,
+            currentTime: playbackState.currentTime,
+            isPlaying: false,
+            sleepTimerEndTime: playbackState.sleepTimerEndTime
+        )
     }
     
     func togglePlayback() {
@@ -87,17 +133,28 @@ class AudioManager: ObservableObject {
     func seek(to progress: Double) {
         guard let duration = currentStory?.duration else { return }
         let targetTime = duration * progress
-        playbackState.currentTime = targetTime
         
-        if let player = audioPlayer {
-            player.seek(to: CMTime(seconds: targetTime, preferredTimescale: 1000))
+        if let player = player {
+            player.seek(to: CMTime(seconds: targetTime, preferredTimescale: 600))
+            playbackState = PlaybackState(
+                currentStoryID: currentStory?.id,
+                currentTime: targetTime,
+                isPlaying: playbackState.isPlaying,
+                sleepTimerEndTime: playbackState.sleepTimerEndTime
+            )
         }
     }
     
     // MARK: - Sleep Timer
     func startSleepTimer(duration: TimeInterval) {
         cancelSleepTimer()
-        playbackState.remainingTimerDuration = duration
+        let endTime = Date().addingTimeInterval(duration)
+        playbackState = PlaybackState(
+            currentStoryID: currentStory?.id,
+            currentTime: playbackState.currentTime,
+            isPlaying: playbackState.isPlaying,
+            sleepTimerEndTime: endTime
+        )
         
         sleepTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else {
@@ -105,13 +162,9 @@ class AudioManager: ObservableObject {
                 return
             }
             
-            if let remaining = self.playbackState.remainingTimerDuration {
-                if remaining <= 0 {
-                    self.pause()
-                    self.cancelSleepTimer()
-                } else {
-                    self.playbackState.remainingTimerDuration = remaining - 1
-                }
+            if !self.playbackState.hasActiveTimer {
+                self.pause()
+                self.cancelSleepTimer()
             }
         }
     }
@@ -119,73 +172,41 @@ class AudioManager: ObservableObject {
     func cancelSleepTimer() {
         sleepTimer?.invalidate()
         sleepTimer = nil
-        playbackState.remainingTimerDuration = nil
+        playbackState = PlaybackState(
+            currentStoryID: currentStory?.id,
+            currentTime: playbackState.currentTime,
+            isPlaying: playbackState.isPlaying,
+            sleepTimerEndTime: nil
+        )
     }
     
-    // MARK: - Progress Tracking
-    private func setupTimeObserver() {
-        let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        timeObserver = audioPlayer?.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
-            self?.playbackState.currentTime = time.seconds
+    // MARK: - Private Methods
+    private func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            self.error = error
         }
     }
     
-    // MARK: - Audio Effects
-    private func performFadeOut() {
-        guard let duration = TimeInterval(exactly: userPreferences.fadeOutDuration) else { return }
-        
-        let steps = 50
-        let stepDuration = duration / Double(steps)
-        let volumeDecrement = userPreferences.volume / Float(steps)
-        
-        var currentStep = 0
-        Timer.scheduledTimer(withTimeInterval: stepDuration, repeats: true) { [weak self] timer in
-            guard let self = self else {
-                timer.invalidate()
-                return
-            }
-            
-            currentStep += 1
-            let newVolume = userPreferences.volume - (Float(currentStep) * volumeDecrement)
-            self.audioPlayer?.volume = max(0, newVolume)
-            
-            if currentStep >= steps {
-                timer.invalidate()
-                self.pause()
-                self.audioPlayer?.volume = self.userPreferences.volume
-            }
+    private func addTimeObserver() {
+        let interval = CMTime(seconds: 0.5, preferredTimescale: 600)
+        timeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
+            guard let self = self else { return }
+            self.playbackState = PlaybackState(
+                currentStoryID: self.currentStory?.id,
+                currentTime: time.seconds,
+                isPlaying: self.playbackState.isPlaying,
+                sleepTimerEndTime: self.playbackState.sleepTimerEndTime
+            )
         }
     }
     
-    // MARK: - Cleanup
-    deinit {
-        if let timeObserver = timeObserver {
-            audioPlayer?.removeTimeObserver(timeObserver)
-        }
-        sleepTimer?.invalidate()
-    }
-    
-    // MARK: - State Management
-    private func savePlaybackState() {
-        playbackState.save()
-    }
-    
-    func loadStory(_ story: Story) {
-        currentStory = story
-        let playerItem = AVPlayerItem(url: story.audioURL)
-        audioPlayer = AVPlayer(playerItem: playerItem)
-        
-        // Remove previous time observer
+    private func removeTimeObserver() {
         if let observer = timeObserver {
-            audioPlayer?.removeTimeObserver(observer)
-        }
-        
-        // Add new time observer
-        timeObserver = audioPlayer?.addPeriodicTimeObserver(
-            forInterval: CMTime(seconds: 0.5, preferredTimescale: 1000),
-            queue: .main
-        ) { [weak self] time in
-            self?.playbackState.currentTime = time.seconds
+            player?.removeTimeObserver(observer)
+            timeObserver = nil
         }
     }
 } 

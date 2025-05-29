@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var audioManager: AudioManager
     @State private var selectedTab = 0
     
     var body: some View {
@@ -28,6 +29,12 @@ struct MainTabView: View {
                     Label("Settings", systemImage: "gear")
                 }
                 .tag(3)
+            
+            TestAudioView(audioManager: audioManager)
+                .tabItem {
+                    Label("Test Audio", systemImage: "speaker.wave.2")
+                }
+                .tag(4)
         }
     }
 } 

@@ -5,7 +5,7 @@ struct Story: Identifiable, Codable {
     let title: String
     let description: String
     let narrator: String
-    let duration: TimeInterval
+    var duration: TimeInterval
     let category: Category
     let timePeriod: String
     let region: String
