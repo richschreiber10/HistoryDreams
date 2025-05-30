@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var settingsManager: SettingsManager
     @State private var isDownloadOverCellular = false
     @State private var autoPlayNextStory = true
     @State private var selectedVoice = "Default"
@@ -12,6 +13,10 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("Appearance") {
+                    Toggle("Dark Mode", isOn: $settingsManager.darkModeEnabled)
+                }
+                
                 Section("Playback") {
                     Picker("Narrator Voice", selection: $selectedVoice) {
                         ForEach(availableVoices, id: \.self) { voice in
@@ -32,7 +37,7 @@ struct SettingsView: View {
                     Toggle("Download over Cellular", isOn: $isDownloadOverCellular)
                     
                     NavigationLink {
-                        Text("Download Settings Details")
+                        ManageDownloadsView()
                     } label: {
                         Text("Manage Downloads")
                     }
@@ -40,13 +45,13 @@ struct SettingsView: View {
                 
                 Section("About") {
                     NavigationLink {
-                        Text("Privacy Policy Details")
+                        PrivacyPolicyView()
                     } label: {
                         Text("Privacy Policy")
                     }
                     
                     NavigationLink {
-                        Text("Terms of Service Details")
+                        TermsOfServiceView()
                     } label: {
                         Text("Terms of Service")
                     }
@@ -66,4 +71,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(SettingsManager())
 } 

@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9BC7F00D2DE7FEAF0057DDDF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F00B2DE7FEAF0057DDDF /* SettingsView.swift */; };
+		9BC7F00E2DE7FEAF0057DDDF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F00A2DE7FEAF0057DDDF /* LibraryView.swift */; };
+		9BC7F00F2DE7FEAF0057DDDF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F0092DE7FEAF0057DDDF /* HomeView.swift */; };
+		9BC7F0102DE7FEAF0057DDDF /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F00C2DE7FEAF0057DDDF /* TimerView.swift */; };
+		9BC7F0182DE7FFEF0057DDDF /* StoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F0162DE7FFEF0057DDDF /* StoryRowView.swift */; };
+		9BC7F0192DE7FFEF0057DDDF /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F0152DE7FFEF0057DDDF /* PlayerControls.swift */; };
+		9BC7F01F2DE801F00057DDDF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F01E2DE801F00057DDDF /* AudioManager.swift */; };
+		9BC7F0252DE80A980057DDDF /* TestAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F0242DE80A980057DDDF /* TestAudioView.swift */; };
+		9BC7F0282DE80AC60057DDDF /* sample_history.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BC7F0272DE80AC60057DDDF /* sample_history.mp3 */; };
+		9BC7F02F2DE80E220057DDDF /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F02D2DE80E220057DDDF /* UserPreferences.swift */; };
+		9BC7F0302DE80E220057DDDF /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F02B2DE80E220057DDDF /* PlaybackState.swift */; };
+		9BC7F0312DE80E220057DDDF /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F02C2DE80E220057DDDF /* Story.swift */; };
+		A1B2C3D41234567800000001 /* HistoryDreamsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41234567800000002 /* HistoryDreamsApp.swift */; };
+		A1B2C3D41234567800000003 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41234567800000004 /* MainTabView.swift */; };
+		A1B2C3D41234567800000005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41234567800000006 /* Assets.xcassets */; };
+		A1B2C3D41234567800000007 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41234567800000008 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9BC7F0092DE7FEAF0057DDDF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9BC7F00A2DE7FEAF0057DDDF /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		9BC7F00B2DE7FEAF0057DDDF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9BC7F00C2DE7FEAF0057DDDF /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		9BC7F0152DE7FFEF0057DDDF /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
+		9BC7F0162DE7FFEF0057DDDF /* StoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRowView.swift; sourceTree = "<group>"; };
+		9BC7F01E2DE801F00057DDDF /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		9BC7F0242DE80A980057DDDF /* TestAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAudioView.swift; sourceTree = "<group>"; };
+		9BC7F0272DE80AC60057DDDF /* sample_history.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample_history.mp3; path = HistoryDreams/Samples/sample_history.mp3; sourceTree = SOURCE_ROOT; };
+		9BC7F02B2DE80E220057DDDF /* PlaybackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackState.swift; sourceTree = "<group>"; };
+		9BC7F02C2DE80E220057DDDF /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		9BC7F02D2DE80E220057DDDF /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		9BC7F0322DE80F840057DDDF /* sample_history.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample_history.mp3; sourceTree = "<group>"; };
+		A1B2C3D41234567800000002 /* HistoryDreamsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDreamsApp.swift; sourceTree = "<group>"; };
+		A1B2C3D41234567800000004 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		A1B2C3D41234567800000006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D41234567800000008 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1B2C3D41234567800000009 /* HistoryDreams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistoryDreams.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D41234567800000010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9BC7F0172DE7FFEF0057DDDF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F0152DE7FFEF0057DDDF /* PlayerControls.swift */,
+				9BC7F0162DE7FFEF0057DDDF /* StoryRowView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9BC7F0262DE80AA30057DDDF /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F0272DE80AC60057DDDF /* sample_history.mp3 */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		9BC7F02E2DE80E220057DDDF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F02B2DE80E220057DDDF /* PlaybackState.swift */,
+				9BC7F02C2DE80E220057DDDF /* Story.swift */,
+				9BC7F02D2DE80E220057DDDF /* UserPreferences.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9BC7F0332DE80F840057DDDF /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F0322DE80F840057DDDF /* sample_history.mp3 */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000011 = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41234567800000013 /* Products */,
+				A1B2C3D41234567800000012 /* HistoryDreams */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000012 /* HistoryDreams */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F0332DE80F840057DDDF /* Samples */,
+				9BC7F02E2DE80E220057DDDF /* Models */,
+				A1B2C3D41234567800000014 /* App */,
+				A1B2C3D41234567800000015 /* Views */,
+				A1B2C3D41234567800000016 /* Services */,
+				A1B2C3D41234567800000006 /* Assets.xcassets */,
+				A1B2C3D41234567800000017 /* Preview Content */,
+			);
+			path = HistoryDreams;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000013 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41234567800000009 /* HistoryDreams.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000014 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41234567800000002 /* HistoryDreamsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000015 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F0242DE80A980057DDDF /* TestAudioView.swift */,
+				9BC7F0262DE80AA30057DDDF /* Samples */,
+				9BC7F0172DE7FFEF0057DDDF /* Components */,
+				9BC7F0092DE7FEAF0057DDDF /* HomeView.swift */,
+				9BC7F00A2DE7FEAF0057DDDF /* LibraryView.swift */,
+				9BC7F00B2DE7FEAF0057DDDF /* SettingsView.swift */,
+				9BC7F00C2DE7FEAF0057DDDF /* TimerView.swift */,
+				A1B2C3D41234567800000004 /* MainTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000016 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9BC7F01E2DE801F00057DDDF /* AudioManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41234567800000017 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41234567800000008 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D41234567800000018 /* HistoryDreams */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D41234567800000019 /* Build configuration list for PBXNativeTarget "HistoryDreams" */;
+			buildPhases = (
+				A1B2C3D41234567800000020 /* Sources */,
+				A1B2C3D41234567800000010 /* Frameworks */,
+				A1B2C3D41234567800000021 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HistoryDreams;
+			productName = HistoryDreams;
+			productReference = A1B2C3D41234567800000009 /* HistoryDreams.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3D41234567800000022 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1B2C3D41234567800000018 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3D41234567800000023 /* Build configuration list for PBXProject "HistoryDreams" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3D41234567800000011;
+			productRefGroup = A1B2C3D41234567800000013 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D41234567800000018 /* HistoryDreams */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D41234567800000021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BC7F0282DE80AC60057DDDF /* sample_history.mp3 in Resources */,
+				A1B2C3D41234567800000007 /* Preview Assets.xcassets in Resources */,
+				A1B2C3D41234567800000005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D41234567800000020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D41234567800000003 /* MainTabView.swift in Sources */,
+				A1B2C3D41234567800000001 /* HistoryDreamsApp.swift in Sources */,
+				9BC7F0252DE80A980057DDDF /* TestAudioView.swift in Sources */,
+				9BC7F00D2DE7FEAF0057DDDF /* SettingsView.swift in Sources */,
+				9BC7F00E2DE7FEAF0057DDDF /* LibraryView.swift in Sources */,
+				9BC7F0182DE7FFEF0057DDDF /* StoryRowView.swift in Sources */,
+				9BC7F0192DE7FFEF0057DDDF /* PlayerControls.swift in Sources */,
+				9BC7F01F2DE801F00057DDDF /* AudioManager.swift in Sources */,
+				9BC7F00F2DE7FEAF0057DDDF /* HomeView.swift in Sources */,
+				9BC7F02F2DE80E220057DDDF /* UserPreferences.swift in Sources */,
+				9BC7F0302DE80E220057DDDF /* PlaybackState.swift in Sources */,
+				9BC7F0312DE80E220057DDDF /* Story.swift in Sources */,
+				9BC7F0102DE7FEAF0057DDDF /* TimerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C3D41234567800000024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1B2C3D41234567800000025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1B2C3D41234567800000026 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HistoryDreams/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.HistoryDreams;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1B2C3D41234567800000027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HistoryDreams/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.HistoryDreams;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D41234567800000019 /* Build configuration list for PBXNativeTarget "HistoryDreams" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D41234567800000026 /* Debug */,
+				A1B2C3D41234567800000027 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D41234567800000023 /* Build configuration list for PBXProject "HistoryDreams" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D41234567800000024 /* Debug */,
+				A1B2C3D41234567800000025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B2C3D41234567800000022 /* Project object */;
+}

@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B141A652DE9382B00EFFE17 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B141A622DE9382B00EFFE17 /* PrivacyPolicyView.swift */; };
+		9B141A662DE9382B00EFFE17 /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B141A632DE9382B00EFFE17 /* TermsOfServiceView.swift */; };
+		9B141A6A2DE9383C00EFFE17 /* ManageDownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B141A672DE9383C00EFFE17 /* ManageDownloadsView.swift */; };
+		9B141A6D2DE9388400EFFE17 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B141A6C2DE9388400EFFE17 /* SettingsView.swift */; };
 		9B7191412DE927B7008FDCB3 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7191402DE927B7008FDCB3 /* MiniPlayerView.swift */; };
 		9B71914B2DE92E1C008FDCB3 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B71914A2DE92E1C008FDCB3 /* TimerManager.swift */; };
-		9BC7F00D2DE7FEAF0057DDDF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F00B2DE7FEAF0057DDDF /* SettingsView.swift */; };
+		9B71914D2DE93080008FDCB3 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B71914C2DE93080008FDCB3 /* SettingsManager.swift */; };
 		9BC7F00E2DE7FEAF0057DDDF /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F00A2DE7FEAF0057DDDF /* LibraryView.swift */; };
 		9BC7F00F2DE7FEAF0057DDDF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F0092DE7FEAF0057DDDF /* HomeView.swift */; };
 		9BC7F0102DE7FEAF0057DDDF /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7F00C2DE7FEAF0057DDDF /* TimerView.swift */; };
@@ -28,11 +32,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B141A622DE9382B00EFFE17 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		9B141A632DE9382B00EFFE17 /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
+		9B141A672DE9383C00EFFE17 /* ManageDownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDownloadsView.swift; sourceTree = "<group>"; };
+		9B141A682DE9383C00EFFE17 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9B141A6C2DE9388400EFFE17 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9B7191402DE927B7008FDCB3 /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		9B71914A2DE92E1C008FDCB3 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		9B71914C2DE93080008FDCB3 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		9BC7F0092DE7FEAF0057DDDF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9BC7F00A2DE7FEAF0057DDDF /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		9BC7F00B2DE7FEAF0057DDDF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9BC7F00C2DE7FEAF0057DDDF /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		9BC7F0152DE7FFEF0057DDDF /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		9BC7F0162DE7FFEF0057DDDF /* StoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRowView.swift; sourceTree = "<group>"; };
@@ -61,6 +70,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B141A642DE9382B00EFFE17 /* Legal */ = {
+			isa = PBXGroup;
+			children = (
+				9B141A622DE9382B00EFFE17 /* PrivacyPolicyView.swift */,
+				9B141A632DE9382B00EFFE17 /* TermsOfServiceView.swift */,
+			);
+			path = Legal;
+			sourceTree = "<group>";
+		};
+		9B141A692DE9383C00EFFE17 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9B141A672DE9383C00EFFE17 /* ManageDownloadsView.swift */,
+				9B141A682DE9383C00EFFE17 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		9B7191472DE92D7F008FDCB3 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,12 +172,14 @@
 		A1B2C3D41234567800000015 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9B141A6C2DE9388400EFFE17 /* SettingsView.swift */,
+				9B141A692DE9383C00EFFE17 /* Settings */,
+				9B141A642DE9382B00EFFE17 /* Legal */,
 				9B7191472DE92D7F008FDCB3 /* New Group */,
 				9BC7F0242DE80A980057DDDF /* TestAudioView.swift */,
 				9BC7F0262DE80AA30057DDDF /* Samples */,
 				9BC7F0092DE7FEAF0057DDDF /* HomeView.swift */,
 				9BC7F00A2DE7FEAF0057DDDF /* LibraryView.swift */,
-				9BC7F00B2DE7FEAF0057DDDF /* SettingsView.swift */,
 				9BC7F00C2DE7FEAF0057DDDF /* TimerView.swift */,
 				A1B2C3D41234567800000004 /* MainTabView.swift */,
 				9B7191492DE92DA6008FDCB3 /* Components */,
@@ -161,6 +190,7 @@
 		A1B2C3D41234567800000016 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9B71914C2DE93080008FDCB3 /* SettingsManager.swift */,
 				9B71914A2DE92E1C008FDCB3 /* TimerManager.swift */,
 				9BC7F01E2DE801F00057DDDF /* AudioManager.swift */,
 			);
@@ -246,11 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B141A6A2DE9383C00EFFE17 /* ManageDownloadsView.swift in Sources */,
 				A1B2C3D41234567800000003 /* MainTabView.swift in Sources */,
 				A1B2C3D41234567800000001 /* HistoryDreamsApp.swift in Sources */,
 				9BC7F0252DE80A980057DDDF /* TestAudioView.swift in Sources */,
+				9B141A6D2DE9388400EFFE17 /* SettingsView.swift in Sources */,
 				9B7191412DE927B7008FDCB3 /* MiniPlayerView.swift in Sources */,
-				9BC7F00D2DE7FEAF0057DDDF /* SettingsView.swift in Sources */,
 				9BC7F00E2DE7FEAF0057DDDF /* LibraryView.swift in Sources */,
 				9B71914B2DE92E1C008FDCB3 /* TimerManager.swift in Sources */,
 				9BC7F0182DE7FFEF0057DDDF /* StoryRowView.swift in Sources */,
@@ -258,7 +289,10 @@
 				9BC7F01F2DE801F00057DDDF /* AudioManager.swift in Sources */,
 				9BC7F00F2DE7FEAF0057DDDF /* HomeView.swift in Sources */,
 				9BC7F02F2DE80E220057DDDF /* UserPreferences.swift in Sources */,
+				9B71914D2DE93080008FDCB3 /* SettingsManager.swift in Sources */,
 				9BC7F0302DE80E220057DDDF /* PlaybackState.swift in Sources */,
+				9B141A652DE9382B00EFFE17 /* PrivacyPolicyView.swift in Sources */,
+				9B141A662DE9382B00EFFE17 /* TermsOfServiceView.swift in Sources */,
 				9BC7F0312DE80E220057DDDF /* Story.swift in Sources */,
 				9BC7F0102DE7FEAF0057DDDF /* TimerView.swift in Sources */,
 			);

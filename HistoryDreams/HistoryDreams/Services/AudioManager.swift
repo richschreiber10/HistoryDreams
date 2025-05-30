@@ -15,17 +15,18 @@ class AudioManager: ObservableObject {
     private var timeObserver: Any?
     private var sleepTimer: Timer?
     private var cancellables = Set<AnyCancellable>()
-    private let userPreferences: UserPreferences
+    private let settingsManager: SettingsManager
     private var wasPlayingBeforeInterruption = false
     private var progressUpdateThrottle: TimeInterval = 1.0 // Update progress every second
     private var lastProgressUpdate: TimeInterval = 0
     
     // MARK: - Initialization
-    init(userPreferences: UserPreferences = .load()) {
-        self.userPreferences = userPreferences
+    init(settingsManager: SettingsManager = SettingsManager()) {
+        self.settingsManager = settingsManager
         self.playbackState = .initial
         setupAudioSession()
         setupNotifications()
+        observeSettings()
     }
     
     deinit {
@@ -63,7 +64,7 @@ class AudioManager: ObservableObject {
                     if let story = self.currentStory {
                         // Load saved progress if available and user preferences allow
                         let savedProgress = self.loadSavedProgress(for: story.id)
-                        let startPosition = self.userPreferences.rememberPlaybackPosition ? savedProgress : 0
+                        let startPosition = self.settingsManager.rememberPlaybackPosition ? savedProgress : 0
                         
                         self.currentStory = Story(
                             id: story.id,
@@ -324,7 +325,7 @@ class AudioManager: ObservableObject {
     
     @objc private func handleEnterBackground() {
         // Ensure background playback continues if enabled
-        if userPreferences.backgroundPlaybackEnabled {
+        if settingsManager.backgroundPlaybackEnabled {
             try? AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
         } else {
             pause()
@@ -379,7 +380,7 @@ class AudioManager: ObservableObject {
                 )
                 
                 // Save progress if enabled
-                if self.userPreferences.rememberPlaybackPosition {
+                if self.settingsManager.rememberPlaybackPosition {
                     self.saveProgress(progress, for: story.id)
                 }
             }
@@ -437,8 +438,25 @@ class AudioManager: ObservableObject {
         )
         
         // Handle autoplay if enabled
-        if userPreferences.autoplayEnabled {
+        if settingsManager.autoplayEnabled {
             // TODO: Implement autoplay functionality
         }
+    }
+    
+    // MARK: - Settings Observation
+    private func observeSettings() {
+        // Observe volume changes
+        settingsManager.$volume
+            .sink { [weak self] volume in
+                self?.player?.volume = Float(volume)
+            }
+            .store(in: &cancellables)
+        
+        // Observe playback speed changes
+        settingsManager.$playbackSpeed
+            .sink { [weak self] speed in
+                self?.player?.rate = Float(speed)
+            }
+            .store(in: &cancellables)
     }
 } 
